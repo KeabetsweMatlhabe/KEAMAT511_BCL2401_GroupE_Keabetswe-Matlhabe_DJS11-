@@ -25,6 +25,7 @@ const Navbar = () => {
         <div className="navbar-profile"> 
         <img src={profile_img} alt="" className='profile'/>
         <img src={caret_icon} alt="icons"/>
+        <div className="dropdown">SignOut</div>
         </div>
       </div>
     </div>
