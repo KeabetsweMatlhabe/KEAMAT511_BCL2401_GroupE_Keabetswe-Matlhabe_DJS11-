@@ -1,92 +1,25 @@
-import './App.css';
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-// routes
-import {
-  Home,
-  Signup,
-  SinglePodcast,
-  Login,
-  Favourites,
-  PageNotFound,
-} from './components/Header';
-import supabase from './supabase/client';
-// redux
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  setAllPodcasts,
-  setIsLoading,
-  setHomePageDisplayedPodcasts,
-  setUserDataFromDB,
-  setHasAccount,
-  setFavourites,
-  setSortSearchFavouritesArray,
-} from './globalState/reducers/podcastsReducer';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Series from "./pages/Series/Series";
+import Layout from "./components/Layout";
+import SeriesDetail from "./pages/Series/SeriesDetail";
+import Episodes from "./pages/Series/Episodes";
 
-function App() {
-  const { favourites, favouriteSwitch } = useSelector(
-    (state) => state.podcastsReducer
-  );
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setIsLoading(true));
-    const getPodcasts = async () => {
-      const response = await fetch('https://podcast-api.netlify.app/shows');
-      const result = await response.json();
-
-      if (result) {
-        dispatch(setHomePageDisplayedPodcasts(result));
-        dispatch(setAllPodcasts(result));
-
-        dispatch(setIsLoading(false));
-      } else {
-        console.log('error');
-      }
-      return result;
-    };
-    getPodcasts();
-  }, []);
-
-  const fetchLoginData = async () => {
-    const { data, error } = await supabase.from('user_login_data').select();
-    if (error) {
-      console.log(error);
-    }
-    if (data.length !== 0) {
-      dispatch(setUserDataFromDB(data));
-      dispatch(setHasAccount(true));
-    }
-  };
-  useEffect(() => {
-    fetchLoginData();
-  }, []);
-
-  const fetchFavouritesFromDB = async () => {
-    const { data, error } = await supabase.from('userFavourites').select();
-    if (data) {
-      dispatch(setFavourites(data));
-    }
-  };
-  useEffect(() => {
-    fetchFavouritesFromDB();
-  }, [favouriteSwitch]);
-
+export default function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/podcast/:id" element={<SinglePodcast />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/series" element={<Series />} />
+          <Route path="/series/:id" element={<SeriesDetail />} />
+          <Route path="/series/:seasonId/episodes" element={<Episodes />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
-
-export default App;
