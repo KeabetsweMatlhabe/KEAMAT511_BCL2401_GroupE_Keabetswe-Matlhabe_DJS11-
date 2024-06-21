@@ -4,12 +4,15 @@
 
 html,
 body {
+  color: #333;
+  background-color: #555;
   margin: 0;
   padding: 0;
-  background-color: white;
   font-family: "Inter", sans-serif;
   -ms-overflow-style: none;
   scrollbar-width: none;
+ /*background-image: url("../public/background_banner.jpg");*/
+  
 }
 
 body::-webkit-scrollbar {
@@ -26,6 +29,12 @@ header {
   height: 110px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  /* font-style: normal;
+  font-size: medium;
+  height: 110px;
+  display: flex;
+  align-items: center; */
   padding-block: 10px;
 }
 
@@ -37,16 +46,24 @@ header .site-logo {
   font-size: 15px;
 }
 
+header nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 header a {
+  
   text-decoration: none;
-  color: red;
-  font-weight: 600;
+  color: white;
+  font-weight: 900;
   padding: 5px 20px;
+  /* padding-left: 5px 20px; */
 }
 
 footer {
-  background-color: black;
-  color: red;
+  background-color: aqua;
+  color: black;
   height: 75px;
   display: flex;
   flex-shrink: 0;
@@ -75,6 +92,31 @@ button {
   transition: background-color 0.3s;
 }
 
+.filter-buttons {
+  display: flex;
+  margin-top: 10rem;
+  justify-content: space-around; /* Distribute buttons evenly */
+  margin-bottom: 1rem; /* Add some space below the buttons */
+}
+
+.filter-buttons button {
+  padding: 0.5rem 1rem; /* Set button padding */
+  border: 1px solid #ddd; /* Add a border */
+  border-radius: 4px; /* Add rounded corners */
+  cursor: pointer; /* Indicate clickable behavior */
+  background-color: aquamarine; /* Set default background color */
+  color: #333; /* Set default text color */
+}
+
+.filter-buttons button:hover {
+  background-color: #eee; /* Change background color on hover */
+}
+
+.filter-buttons button.active { /* Style for the currently selected button */
+  background-color: #ddd; /* Set background color for active button */
+}
+
+
 
 
 .series-container {
@@ -95,7 +137,7 @@ button {
 }
 
 .series-card {
-  background: #fff;
+  background: aquamarine;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
