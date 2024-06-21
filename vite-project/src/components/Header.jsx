@@ -19,23 +19,21 @@ function Header() {
   );
 }
 
-function PodcastDetails({
+function Favorites({
   loading,
   show,
   backButton,
   expandedDescriptions,
   handleDescriptionToggle,
   currentEpisode,
-  // Add favorite-related props/functions here
-  favorites,
-  setFavorites,
   handleFavoriteClick,
   isFavorite,
   // Add season-related props/functions here
   selectedSeason,
-  setSelectedSeason,
   HandleSeasonClick,
-}) {
+})
+
+{
   return (
     <div className="podcast-details-container">
       {loading ? (
