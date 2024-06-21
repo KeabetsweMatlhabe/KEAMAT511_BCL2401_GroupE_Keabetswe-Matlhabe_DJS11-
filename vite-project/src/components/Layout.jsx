@@ -1,16 +1,16 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
-const Layout = () => {
+export default function Layout() {
   return (
     <div className="site-wrapper">
-      <Navbar />
+      <Header />
       <main>
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
-};
-
-export default Layout;
+}
