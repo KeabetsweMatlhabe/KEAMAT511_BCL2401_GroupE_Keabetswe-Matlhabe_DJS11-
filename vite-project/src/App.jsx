@@ -1,12 +1,25 @@
-import React from 'react'
-import Home from './pages/Home/Home'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
+import Podcasts from "./pages/Podcasts";
+import Favorites from "./pages/Favorites";
+import PodcastDetails from "./pages/PodcastDetails";
 
-const App = () => {
+export const App = () => {
   return (
-    <div>
-      <Home/>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="podcasts" element={<Podcasts />} />
+          <Route path="podcasts/:id" element={<PodcastDetails />} />
 
-export default App
+          <Route path="favorites" element={<Favorites />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;

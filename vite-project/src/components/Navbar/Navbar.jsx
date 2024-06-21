@@ -13,9 +13,8 @@ const Navbar = () => {
       <div className="navbar-left"><img src={logo} alt="" /> </div>
       <ul>
         <li>Home</li>
-        <li>Shows</li>
+        <li>Podcast Shows</li>
         <li>New & Popular</li>
-        <li>My list</li>
         <li>Browse by Season</li>
       </ul>
       <div className="navbar-right">
