@@ -6,7 +6,7 @@ This project builds a single-page web application (SPA) for browsing and listeni
 # Functionality #
 This project implements core functionalities like:
 
-Deployment: Deployed to Netlify with a custom favicon and meta tags().
+Deployment: Deployed to Netlify with a custom favicon and meta tags (https://earnest-pie-52d3ad.netlify.app/series).
 User Interface: Displays show names, sorting options, audio playback functionality, season views, preview images, genre titles, and more.
 Data Fetching: Fetches podcast data through API calls using fetch.
 State Management: Manages application state using React's useState and useEffect hooks.
